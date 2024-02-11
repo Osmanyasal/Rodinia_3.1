@@ -1,6 +1,7 @@
 // Copyright 2009, Andrew Corrigan, acorriga@gmu.edu
 // This code is from the AIAA-2009-4001 paper
 
+#include <optkit.hh>
 #include <iostream>
 #include <fstream>
 
@@ -18,9 +19,9 @@ struct float3 { float x, y, z; };
 
 #ifndef block_length
 	#ifdef _OPENMP
-	#error "you need to define block_length"
+		#error "you need to define block_length"
 	#else
-	#define block_length 1
+		#define block_length 1
 	#endif
 #endif
 
@@ -376,6 +377,12 @@ int main(int argc, char** argv)
 		std::cout << "specify data file name" << std::endl;
 		return 0;
 	}
+	omp_set_num_threads(block_length);
+	std::cout << "num threads: " << omp_get_max_threads() << "\n";
+	
+	OptimizerKit optkit{false};
+	OPTKIT_RAPL(main_block,argv[0]);
+	
 	const char* data_file_name = argv[1];
 
         float ff_variable[NVAR];

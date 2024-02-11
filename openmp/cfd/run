@@ -1,1 +1,8 @@
-./euler3d_cpu ../../data/cfd/fvcorr.domn.193K
+max_threads=$(nproc)
+echo "MAX THREADS :$max_threads"
+echo "-------------------------"
+
+for ((i = 1; i <= max_threads; i *= 2)); do
+    echo "------------ Current thread count: $i ------------------"
+	./euler3d_cpu_th_$i ../../data/cfd/missile.domn.0.2M
+done

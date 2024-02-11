@@ -98,7 +98,7 @@ void usage(char *argv0) {
 }
 
 /*---< main() >-------------------------------------------------------------*/
-int main(int argc, char **argv) {
+int main_c(int argc, char **argv) {
            int     opt;
     extern char   *optarg;
     extern int     optind;

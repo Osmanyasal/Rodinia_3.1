@@ -1,1 +1,10 @@
-./heartwall ../../data/heartwall/test.avi 20 4
+## program   video frame_to_process(0-104)  num of cores
+
+max_threads=$(nproc)
+echo "MAX THREADS :$max_threads"
+echo "-------------------------"
+
+for ((i = 1; i <= max_threads; i *= 2)); do
+    echo "------------ Current thread count: $i ------------------"
+	./heartwall ../../data/heartwall/test.avi 100 $i
+done

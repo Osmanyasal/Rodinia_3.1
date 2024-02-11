@@ -11,21 +11,18 @@ override OUTPUT = -DOUTPUT
 endif
 
 C_C = gcc
+CPP = g++
 OMP_LIB = -lgomp
 OMP_FLAG = -fopenmp
 
 # link objects (binaries) together
-a.out:		main.o \
+lavaMD:		main.o \
 			./kernel/kernel_cpu.o \
 			./util/num/num.o \
 			./util/timer/timer.o
-	$(C_C)	main.o \
-			./kernel/kernel_cpu.o \
-			./util/num/num.o \
-			./util/timer/timer.o \
-			-lm \
-			$(OMP_LIB) \
-			-o lavaMD
+	$(CPP)	../../optkit_cwrapper.o main.o ./kernel/kernel_cpu.o ./util/num/num.o ./util/timer/timer.o -o lavaMD \
+			-I/usr/local/include/optkit/ -I/usr/local/include/spdlog -fopenmp -loptkit -lGLEW -lglfw3 -lGL -lspdlog -lpfm -ldl -lpthread -lm -fopenmp
+
 # compile function files into objects (binaries)
 main.o:		main.h \
 			main.c \

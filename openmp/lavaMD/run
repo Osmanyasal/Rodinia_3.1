@@ -1,1 +1,9 @@
-./lavaMD -cores 4 -boxes1d 10
+
+max_threads=$(nproc)
+echo "MAX THREADS :$max_threads"
+echo "-------------------------"
+
+for ((i = 1; i <= max_threads; i *= 2)); do
+    echo "------------ Current thread count: $i ------------------"
+    ./lavaMD -cores $i -boxes1d 10
+done
