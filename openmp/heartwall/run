@@ -9,3 +9,9 @@ for ((i = 1; i <= max_cores; i *= 2)); do
     echo "------------ Current thread count: $i ------------------"
 	taskset -c $cores ./heartwall ../../data/heartwall/test.avi 100 $i
 done
+
+
+if (( $i < $max_cores )); then
+    echo "max_cores executed"
+	taskset -c $cores ./heartwall ../../data/heartwall/test.avi 100 $max_cores
+fi 

@@ -7,3 +7,9 @@ for ((i = 1; i <= max_cores; i *= 2)); do
     echo "------------ Current thread count: $i ------------------"
 	taskset -c $cores ./euler3d_cpu_th_$i ../../data/cfd/missile.domn.0.2M
 done
+
+if (( $i < $max_cores )); then
+    echo "max_cores executed"
+	taskset -c $cores ./euler3d_cpu_th_$max_cores ../../data/cfd/missile.domn.0.2M
+fi 
+ 
