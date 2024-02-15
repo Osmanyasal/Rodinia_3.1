@@ -1,11 +1,10 @@
 source ../scaling_settings.sh
 
-max_threads=$(nproc)
-echo "MAX THREADS :$max_threads"
+echo "MAX THREADS :$max_cores"
 echo "-------------------------"
 
 cd ./kmeans_openmp
-	for ((i = 1; i <= max_threads; i *= 2)); do
+	for ((i = 1; i <= max_cores; i *= 2)); do
     	echo "------------ Current thread count: $i ------------------"
 		taskset -c $cores ./kmeans -n $i -i ../../../data/kmeans/inputGen/10000000_34f.txt
 	done

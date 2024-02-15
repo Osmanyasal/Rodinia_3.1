@@ -1,10 +1,9 @@
 source ../scaling_settings.sh
 
-max_threads=$(nproc)
-echo "MAX THREADS :$max_threads"
+echo "MAX THREADS :$max_cores"
 echo "-------------------------"
 
-for ((i = 1; i <= max_threads; i *= 2)); do
+for ((i = 1; i <= max_cores; i *= 2)); do
     echo "------------ Current thread count: $i ------------------"
 	taskset -c $cores ./euler3d_cpu_th_$i ../../data/cfd/missile.domn.0.2M
 done
