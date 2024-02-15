@@ -5,7 +5,7 @@ hostname=$(hostname)
 # Check if the hostname matches a specific pattern
 
 cores="0-$(nproc)"	## get maximum by default
-max_cores = $(nproc)
+max_cores=$(nproc)
 
 if [[ $hostname == "user-HP-Z840-Workstation" ]]; then
     cores="10-19,30-39"	## get second socket
