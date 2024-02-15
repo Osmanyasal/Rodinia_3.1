@@ -1,9 +1,9 @@
+source ../scaling_settings.sh
 
 max_threads=$(nproc)
-echo "MAX THREADS :$max_threads"
-echo "-------------------------"
+echo "MAX THREADS :$max_threads" 
 
 for ((i = 1; i <= max_threads; i *= 2)); do
     echo "------------ Current thread count: $i ------------------"
-    ./lavaMD -cores $i -boxes1d 10
+    taskset -c $cores ./lavaMD -cores $i -boxes1d 30
 done

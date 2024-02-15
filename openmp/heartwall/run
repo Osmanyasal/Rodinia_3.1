@@ -1,3 +1,5 @@
+source ../scaling_settings.sh
+
 ## program   video frame_to_process(0-104)  num of cores
 
 max_threads=$(nproc)
@@ -6,5 +8,5 @@ echo "-------------------------"
 
 for ((i = 1; i <= max_threads; i *= 2)); do
     echo "------------ Current thread count: $i ------------------"
-	./heartwall ../../data/heartwall/test.avi 100 $i
+	taskset -c $cores ./heartwall ../../data/heartwall/test.avi 100 $i
 done
