@@ -1,1 +1,21 @@
-./3D 512 8 100 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out
+source ../scaling_settings.sh
+
+## program   video frame_to_process(0-104)  num of cores
+ 
+echo "MAX THREADS :$max_cores"
+echo "-------------------------"
+
+export OMP_NUM_THREADS=1 && taskset -c $cores ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out
+for ((i = 2; i <= max_cores; i += 2)); do
+    echo "------------ Current thread count: $i ------------------"
+	export OMP_NUM_THREADS=$i && taskset -c $cores ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out
+done
+
+
+if (( $i > $max_cores )); then
+    echo "max_cores executed"
+	export OMP_NUM_THREADS=$max_cores && taskset -c $cores ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out
+fi 
+
+
+ 

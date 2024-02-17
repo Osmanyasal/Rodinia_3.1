@@ -5,8 +5,8 @@ source ../scaling_settings.sh
 echo "MAX THREADS :$max_cores"
 echo "-------------------------"
 
-
-for ((i = 1; i <= max_cores; i *= 2)); do
+taskset -c $cores ./sc_omp 20 40 256 131072 131072 1000 none output.txt 1
+for ((i = 2; i <= max_cores; i += 2)); do
     echo "------------ Current thread count: $i ------------------"
 	taskset -c $cores ./sc_omp 20 40 256 131072 131072 1000 none output.txt $i
 done
@@ -14,8 +14,6 @@ done
 
 if (( $i > $max_cores )); then
     echo "max_cores executed"
-	taskset -c $cores ./sc_omp 20 40 256 131072 131072 1000 none output.txt $i
+	taskset -c $cores ./sc_omp 20 40 256 131072 131072 1000 none output.txt $max_cores
 fi 
 
-
- 

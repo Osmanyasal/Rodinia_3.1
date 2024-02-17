@@ -3,7 +3,8 @@ source ../scaling_settings.sh
 echo "MAX THREADS :$max_cores"
 echo "-------------------------"
 
-for ((i = 1; i <= max_cores; i *= 2)); do
+taskset -c $cores ./euler3d_cpu_th_1 ../../data/cfd/missile.domn.0.2M
+for ((i = 2; i <= max_cores; i += 2)); do
     echo "------------ Current thread count: $i ------------------"
 	taskset -c $cores ./euler3d_cpu_th_$i ../../data/cfd/missile.domn.0.2M
 done

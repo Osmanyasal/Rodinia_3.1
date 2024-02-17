@@ -1,3 +1,0 @@
-[
-{"readings":[{"duration":110234.046875,"event_name":"rapl","metrics_set":[{"description":"Consumed","metric_name":"energy-cores","units":"Joules","value":1159.8120727539063},{"description":"Consumed","metric_name":"energy-gpu","units":"Joules","value":3.9141845703125},{"description":"Consumed","metric_name":"energy-pkg","units":"Joules","value":1469.8847045898438},{"description":"Consumed","metric_name":"energy-psys","units":"Joules","value":9.91650390625}],"package_number":0}]}]
-

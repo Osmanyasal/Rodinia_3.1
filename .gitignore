@@ -1,6 +1,9 @@
 ## REMOVE DATA 
 data
 
+## remove measurements
+*.json
+
 # Prerequisites
 *.d
 
