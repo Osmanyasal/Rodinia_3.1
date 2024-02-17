@@ -3,8 +3,9 @@ source ../scaling_settings.sh
 echo "MAX THREADS :$max_cores"
 echo "-------------------------"
 
+taskset -c $cores ./kmeans -n 1 -i ../../../data/kmeans/inputGen/10000000_34f.txt
 cd ./kmeans_openmp
-	for ((i = 1; i <= max_cores; i *= 2)); do
+	for ((i = 2; i <= max_cores; i += 2)); do
     	echo "------------ Current thread count: $i ------------------"
 		taskset -c $cores ./kmeans -n $i -i ../../../data/kmeans/inputGen/10000000_34f.txt
 	done
@@ -16,6 +17,6 @@ if (( $i > $max_cores )); then
     taskset -c $cores ./kmeans -n $max_cores -i ../../../data/kmeans/inputGen/10000000_34f.txt
 fi
 
-cd ./kmeans_serial
-	./kmeans -i ../../../data/kmeans/inputGen/10000000_34f.txt
-cd ..
+# cd ./kmeans_serial
+# 	./kmeans -i ../../../data/kmeans/inputGen/10000000_34f.txt
+# cd ..

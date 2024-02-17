@@ -5,6 +5,7 @@
 #include <math.h> 
 #include <sys/time.h>
 #include <string.h>
+#include <omp.h>
 
 #define STR_SIZE (256)
 #define MAX_PD	(3.0e6)
@@ -201,7 +202,7 @@ void usage(int argc, char **argv)
 
 
 
-int main(int argc, char** argv)
+int main_c(int argc, char** argv)
 {
     if (argc != 7)
     {
