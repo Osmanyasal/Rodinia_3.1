@@ -4,10 +4,10 @@ echo "MAX CORES :$max_cores"
 
 for ((i = 1; i <= max_cores; i *= 2)); do
     echo "------------ Current thread count: $i ------------------"
-    taskset -c $cores ./lavaMD -cores $i -boxes1d 30
+    taskset -c $cores ./lavaMD -cores $i -boxes1d 40
 done
  
 if (( $i > $max_cores )); then
     echo "max_cores executed"
-    taskset -c $cores ./lavaMD -cores $max_cores -boxes1d 30
+    taskset -c $cores ./lavaMD -cores $max_cores -boxes1d 40
 fi
