@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Loop through each item in the current directory
 for bench in *; do
     # Check if the item is a directory
@@ -9,7 +8,7 @@ for bench in *; do
         echo "$bench"
     fi
 
-    cd $bench ; make clean ; make 
+    cd $bench ; make 
     # for i in {1..5}; 
     # do 
     ./run 

@@ -12,10 +12,10 @@ for ((i = 2; i <= max_cores; i += 2)); do
 done
 
 
-if (( $i > $max_cores )); then
-    echo "max_cores executed"
-	export OMP_NUM_THREADS=$max_cores && taskset -c $cores ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out
-fi 
+# if (( $i > $max_cores )); then
+#     echo "max_cores executed"
+# 	export OMP_NUM_THREADS=$max_cores && taskset -c $cores ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out
+# fi 
 
 
  

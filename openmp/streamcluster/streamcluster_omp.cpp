@@ -1202,10 +1202,9 @@ void streamCluster( PStream* stream,
 }
 
 int main(int argc, char **argv)
-{
-
-
-	OptimizerKit optkit{false};
+{ 
+  
+  OptimizerKit optkit{false};
 	OPTKIT_RAPL(main_block,argv[0]);
 	
   char *outfilename = new char[MAXNAMESIZE];

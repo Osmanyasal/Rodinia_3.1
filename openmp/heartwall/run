@@ -12,7 +12,7 @@ for ((i = 2; i <= max_cores; i += 2)); do
 done
 
 
-if (( $i > $max_cores )); then
-    echo "max_cores executed"
-	taskset -c $cores ./heartwall ../../data/heartwall/test.avi 100 $max_cores
-fi 
+# if (( $i > $max_cores )); then
+#     echo "max_cores executed"
+# 	taskset -c $cores ./heartwall ../../data/heartwall/test.avi 100 $max_cores
+# fi 

@@ -1,7 +1,7 @@
 source ../scaling_settings.sh
 
 ## program   video frame_to_process(0-104)  num of cores
- 
+
 echo "MAX THREADS :$max_cores"
 echo "-------------------------"
 
@@ -12,8 +12,8 @@ for ((i = 2; i <= max_cores; i += 2)); do
 done
 
 
-if (( $i > $max_cores )); then
-    echo "max_cores executed"
-	taskset -c $cores ./sc_omp 20 40 256 131072 131072 1000 none output.txt $max_cores
-fi 
+# if (( $i > $max_cores )); then
+#     echo "max_cores executed"
+# 	taskset -c $cores ./sc_omp 20 40 256 131072 131072 1000 none output.txt $max_cores
+# fi 
 
