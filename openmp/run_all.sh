@@ -7,16 +7,14 @@ for bench in *; do
     if [ -d "$bench" ]; then
         # Print the directory name
         echo "$bench"
+        cd $bench ; make 
+        # for i in {1..5}; 
+        # do 
+            ./run 
+        # done
+
+        cd ..
     fi
-
-    cd $bench ; make clean ; make 
-    # for i in {1..5}; 
-    # do 
-    ./run 
-    # done
-
-    cd ..
-
 
 done
 
