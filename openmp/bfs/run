@@ -1,0 +1,14 @@
+source ../scaling_settings.sh
+ 
+echo "MAX CORES :$max_cores" 
+
+taskset -c $cores ./bfs 1 ../../data/bfs/graph16M.txt 
+for ((i = 2; i <= max_cores; i += 2)); do
+    echo "------------ Current thread count: $i ------------------"
+    taskset -c $cores ./bfs $i ../../data/bfs/graph16M.txt
+done
+ 
+# if (( $i > $max_cores )); then
+#     echo "max_cores executed"
+#     taskset -c $cores ./lavaMD -cores $max_cores -boxes1d 40
+# fi
