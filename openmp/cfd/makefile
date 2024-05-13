@@ -14,7 +14,7 @@ euler3d_cpu: euler3d_cpu.cpp
 
 	## extras!!
 	g++ -O3 -Dblock_length=20 euler3d_cpu.cpp -o euler3d_cpu_th_20 -I/usr/local/include/optkit/ -I/usr/local/include/spdlog -fopenmp -loptkit -lGLEW -lglfw3 -lGL -lspdlog -lpfm -ldl -lpthread -lm -fopenmp; \
-
+	touch euler3d_cpu
 
 clean:
 	rm -f euler3d_cpu_th*

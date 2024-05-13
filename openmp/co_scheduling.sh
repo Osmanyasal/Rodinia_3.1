@@ -1,25 +1,27 @@
 #!/bin/bash
 
-#cores_0_smt="10-19"
-#cores_1_smt="30-39"
 
-#cores_0_no_smt="10-15"
-#cores_1_no_smt="35-39"
-
-cores_0_smt="0-9"
-cores_1_smt="20-29"
+#### SOCKET 1 ####
+cores_0_smt="10-19"
+cores_1_smt="30-39"
+cores_0_no_smt="10-15"
+cores_1_no_smt="35-39"
 
 
-cores_0_no_smt="0-5"
-cores_1_no_smt="25-29"
+#### SOCKET 0 ####
+# cores_0_smt="0-9"
+# cores_1_smt="20-29"
+# cores_0_no_smt="0-5"
+# cores_1_no_smt="25-29"
+
 # Loop through each item in the current directory
 
 ##!-------------------------------------- HOTSPOT3D && LAVAMD --------------------------------------------!##
 
 ##!--------------- SMT ENABLED ----------------!##
-(cd hotspot3D && export OMP_NUM_THREADS=10 && taskset -c $cores_0_smt ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out && echo "Hotspot3D job completed successfully") &
-(cd lavaMD && export OMP_NUM_THREADS=10 && taskset -c $cores_1_smt ./lavaMD -cores 10 -boxes1d 40 && echo "lavaMD job completed successfully") &
-wait
+# (cd hotspot3D && export OMP_NUM_THREADS=10 && taskset -c $cores_0_smt ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out && echo "Hotspot3D job completed successfully") &
+# (cd lavaMD && export OMP_NUM_THREADS=10 && taskset -c $cores_1_smt ./lavaMD -cores 10 -boxes1d 40 && echo "lavaMD job completed successfully") &
+# wait
 
 ##!--------------- SMT DISABLED ----------------!##
 # (cd hotspot3D && export OMP_NUM_THREADS=5 && taskset -c $cores_0_no_smt ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out && echo "Hotspot3D job completed successfully") &
@@ -47,9 +49,9 @@ wait
 # wait
 
 ##!--------------- SMT DISABLED ----------------!##
-# (cd hotspot3D && export OMP_NUM_THREADS=5 && taskset -c $cores_0_no_smt ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out && echo "Hotspot3D job completed successfully") &
-# (cd bfs && export OMP_NUM_THREADS=5 && taskset -c $cores_1_no_smt ./bfs 5 ../../data/bfs/graph16M.txt && echo "BFS job completed successfully") &
-# wait
+(cd hotspot3D && export OMP_NUM_THREADS=5 && taskset -c $cores_0_no_smt ./3D 512 8 10000 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out && echo "Hotspot3D job completed successfully") &
+(cd bfs && export OMP_NUM_THREADS=5 && taskset -c $cores_1_no_smt ./bfs 5 ../../data/bfs/graph16M.txt && echo "BFS job completed successfully") &
+wait
 
 
 
